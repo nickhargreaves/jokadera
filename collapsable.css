@@ -30,6 +30,9 @@ body { background: #fff; }
 
 .nodeExample1 img {
     margin-right:  10px;
-    width: 75px;
     height: 75px;
+}
+
+.node-name{
+    font-weight: bold;
 }

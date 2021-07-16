@@ -18,11 +18,11 @@
         },
         nodeStructure: {
             text:{
-                name: "Ron Blomquist",
-                title: "Chief Information Security Officer"
+                name: "Jim & Suzanna Adera",
+                title: ""
             },
             collapsed: true,
-            image: "img/default.png",
+            image: "img/jim_sue.png",
             children: [
                 {
                     image: "img/default.png",
