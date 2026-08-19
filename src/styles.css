@@ -1,0 +1,170 @@
+:root {
+  color-scheme: light dark;
+  --bg: #f6f5f2;
+  --fg: #2b2620;
+  --card-bg: #ffffff;
+  --card-border: #d8d2c6;
+  --accent: #8a5a3b;
+  --line: #b8ae9c;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1b1815;
+    --fg: #ede8e0;
+    --card-bg: #2a2620;
+    --card-border: #443d33;
+    --accent: #d3a06c;
+    --line: #55493a;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+}
+
+.page {
+  min-height: 100vh;
+  padding: 2rem 1rem 4rem;
+}
+
+.page__title {
+  text-align: center;
+  font-weight: 600;
+  margin: 0 0 2rem;
+}
+
+.tree {
+  overflow-x: auto;
+  padding-bottom: 1rem;
+}
+
+.tree ul {
+  list-style: none;
+  margin: 0;
+  padding-top: 2rem;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.tree > ul {
+  padding-top: 0;
+}
+
+.tree li {
+  list-style: none;
+  position: relative;
+  padding: 2rem 1rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Connector: vertical line up from each non-root node to its parent's row */
+.tree li::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  height: 2rem;
+  border-left: 2px solid var(--line);
+}
+
+.tree > ul > li::before {
+  display: none;
+}
+
+/* Connector: horizontal line joining siblings */
+.tree ul ul::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 0;
+  border-top: 2px solid var(--line);
+  margin: 0 auto;
+  width: calc(100% - 2 * (1rem + 2px));
+}
+
+.tree ul ul {
+  gap: 0.5rem;
+}
+
+.tree li:only-child::before,
+.tree > ul > li::before {
+  display: none;
+}
+
+.tree-node {
+  display: flex;
+}
+
+.tree-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  width: 8.5rem;
+  padding: 0.75rem 0.5rem;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 0.75rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  cursor: default;
+  font: inherit;
+  color: inherit;
+  position: relative;
+}
+
+.tree-card--toggle {
+  cursor: pointer;
+}
+
+.tree-card--toggle:hover {
+  border-color: var(--accent);
+}
+
+.tree-card__photo {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  object-fit: cover;
+  background: var(--bg);
+}
+
+.tree-card__name {
+  font-weight: 600;
+  font-size: 0.9rem;
+  line-height: 1.2;
+}
+
+.tree-card__title {
+  font-size: 0.75rem;
+  opacity: 0.7;
+}
+
+.tree-card__caret {
+  position: absolute;
+  bottom: -0.6rem;
+  right: -0.6rem;
+  width: 1.4rem;
+  height: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.9rem;
+  line-height: 1;
+}
