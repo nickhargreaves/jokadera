@@ -23,9 +23,13 @@ export function TreeNode({ member }: TreeNodeProps) {
             className="tree-card__photo"
             src={`${import.meta.env.BASE_URL}${member.image}`}
             alt=""
+            loading="lazy"
+            decoding="async"
           />
-          <span className="tree-card__name">{member.name || ' '}</span>
-          {member.title && <span className="tree-card__title">{member.title}</span>}
+          <span className="tree-card__text">
+            <span className="tree-card__name">{member.name || ' '}</span>
+            {member.title && <span className="tree-card__title">{member.title}</span>}
+          </span>
           {hasChildren && (
             <span className="tree-card__caret" aria-hidden="true">
               {expanded ? '−' : '+'}
